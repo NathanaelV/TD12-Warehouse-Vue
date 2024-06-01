@@ -2,7 +2,8 @@
     <div>
         <h1>Galpões Cadastrados</h1>
 
-        <table border="1px">
+        <!-- Exibir os dados no formato de tabela -->
+        <!-- <table border="1px">
             <thead>
                 <th>Código</th>
                 <th>Nome</th>
@@ -16,13 +17,31 @@
                     <td>{{ w.code}}</td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
+
+        <!-- Exibir os dados no formato de Card -->
+        <div v-for="w in warehouses" :key="w.id">
+            <Warehouse
+                :name       = "w.name"
+                :code       = "w.code"
+                :address    = "w.address"
+                :city       = "w.city"
+                :area       = "w.area"
+            />
+        </div>
     </div>
 </template>
 
 <script>
+// Importa componente Warehouse
+import Warehouse from '../components/Warehouse.vue'
+
 export default {
     name: 'WarehouseList',
+
+    components: {
+        Warehouse
+    },
 
     data() {
         return {
@@ -47,7 +66,7 @@ export default {
             this.warehouses = result;
             // return this.warehouses
         }
-    },
+    }
 }
 </script>
 
