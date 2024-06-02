@@ -2,6 +2,8 @@
     <div>
         <h1>Galpões Cadastrados</h1>
 
+        <input class="form" type="text" placeholder="Buscar Galpão" v-model="term">
+
         <!-- Exibir os dados no formato de tabela -->
         <!-- <table border="1px">
             <thead>
@@ -20,7 +22,7 @@
         </table> -->
 
         <!-- Exibir os dados no formato de Card -->
-        <div v-for="w in warehouses" :key="w.id">
+        <div v-for="w in filterWarehouse" :key="w.id">
             <Warehouse
                 :name       = "w.name"
                 :code       = "w.code"
@@ -45,7 +47,8 @@ export default {
 
     data() {
         return {
-            warehouses: []
+            warehouses: [],
+            term: ''
         }
     },
 
@@ -66,10 +69,22 @@ export default {
             this.warehouses = result;
             // return this.warehouses
         }
+    },
+
+    computed: {
+        filterWarehouse() {
+            return this.warehouses.filter(warehouse => {
+                // console.log('Warehouse: ' + warehouse.name.toLowerCase())
+                console.log('Warehouse: ' + this.term)
+                return warehouse.name.toLowerCase().includes(this.term.toLocaleLowerCase());
+            })
+        }
     }
 }
 </script>
 
 <style>
-
+.form {
+    margin-bottom: 20px;
+}
 </style>
