@@ -1,12 +1,20 @@
 <template>
-    <div>
-        <nav>
-            <router-link to="/">Home</router-link> |
-            <router-link to="/about">About</router-link> |
-            <router-link to="/warehouses">Galpões Cadastrados</router-link> |
-            <router-link to="/warehouses/new">Cadastrar Galpão</router-link>
-        </nav>
-    </div>
+    <v-container>
+        <v-row>
+            <v-col>
+                <v-toolbar flat color="grey lighten-4">
+                    <v-toolbar-title>Warehouses</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <nav>
+                        <v-btn text color="primary" to="/">Home</v-btn>
+                        <v-btn text color="red" to="/about">About</v-btn>
+                        <v-btn text color="gray" to="/warehouses">Galpões Cadastrados</v-btn>
+                        <v-btn text color="success" to="/warehouses/new">Cadastrar Galpão</v-btn>
+                    </nav>
+                </v-toolbar>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script>
