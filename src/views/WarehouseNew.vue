@@ -3,53 +3,24 @@
         <h1>Cadastrar Galpão</h1>
         <div>
 
-            <div>
+            <v-alert v-if="msg != null" type="info">
                 {{ msg }}
                 <ul v-for="error_msg in error_messages">
                     <li>{{ error_msg }}</li>
                 </ul>
-            </div>
+            </v-alert>
 
-            <form v-on:submit.prevent>
-                <div class="form">
-                    <label>Nome: </label>
-                    <input type="text" v-model="form.name" placeholder="Nome do galpão">
-                </div>
+            <v-form v-on:submit.prevent>
+                <v-text-field label="Nome" v-model="form.name" placeholder="Nome do galpão"></v-text-field>
+                <v-text-field label="Código" v-model="form.code" placeholder="Código do galpão"></v-text-field>
+                <v-text-field label="Endereço" v-model="form.address" placeholder="Endereço do galpão"></v-text-field>
+                <v-text-field label="Cidade" v-model="form.city" placeholder="Cidade"></v-text-field>
+                <v-text-field label="CEP" v-model="form.cep" placeholder="CEP"></v-text-field>
+                <v-text-field label="Área" v-model="form.area" placeholder="Área em m²"></v-text-field>
+                <v-textarea label="Descrição" v-model="form.description"></v-textarea>
 
-                <div class="form">
-                    <label>Código: </label>
-                    <input type="text" v-model="form.code" placeholder="Código do galpão">
-                </div>
-
-                <div class="form">
-                    <label>Endereço: </label>
-                    <input type="text" v-model="form.address" placeholder="Endereço do galpão">
-                </div>
-
-                <div class="form">
-                    <label>Cidade: </label>
-                    <input type="text" v-model="form.city" placeholder="Cidade">
-                </div>
-
-                <div class="form">
-                    <label>CEP: </label>
-                    <input type="text" v-model="form.cep" placeholder="CEP">
-                </div>
-
-                <div class="form">
-                    <label>Área: </label>
-                    <input type="number" v-model="form.area">
-                </div>
-
-                <div class="form">
-                    <label>Descrição: </label>
-                    <textarea v-model="form.description"></textarea>
-                </div>
-
-                <div class="form">
-                    <button v-on:click="postWarehouse">Cadastrar Galpão</button>
-                </div>
-            </form>
+                <v-btn color="primary" v-on:click="postWarehouse">Cadastrar Galpão</v-btn>
+            </v-form>
         </div>
     </div>
 </template>
