@@ -2,7 +2,7 @@
     <div>
         <h1>Galpões Cadastrados</h1>
 
-        <input class="form" type="text" placeholder="Buscar Galpão" v-model="term">
+        <v-text-field label="Buscar galpão" placeholder="Buscar Galpão" v-model="term" class="my-5"></v-text-field>
 
         <!-- Exibir os dados no formato de tabela -->
         <!-- <table border="1px">
@@ -22,7 +22,7 @@
         </table> -->
 
         <!-- Exibir os dados no formato de Card -->
-        <div v-for="w in filterWarehouse" :key="w.id">
+        <!-- <div v-for="w in filterWarehouse" :key="w.id">
             <Warehouse
                 :name       = "w.name"
                 :code       = "w.code"
@@ -30,19 +30,27 @@
                 :city       = "w.city"
                 :area       = "w.area"
             />
-        </div>
+        </div> -->
+        
+        <v-card dark>
+            <v-card-text>
+                <WarehouseTable :warehouses="filterWarehouse"/>
+            </v-card-text>
+        </v-card>
     </div>
 </template>
 
 <script>
 // Importa componente Warehouse
-import Warehouse from '../components/Warehouse.vue'
+import Warehouse from '../components/Warehouse.vue';
+import WarehouseTable from '../components/WarehouseTable.vue';
 
 export default {
     name: 'WarehouseList',
 
     components: {
-        Warehouse
+        Warehouse,
+        WarehouseTable
     },
 
     data() {
